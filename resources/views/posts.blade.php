@@ -15,5 +15,3 @@
     </article>
     @endforeach
 </x-layout>
-Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque fugiat, perspiciatis est qui in modi voluptas autem
-dolore quisquam eum.
