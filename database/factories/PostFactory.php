@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\User;
@@ -22,7 +23,8 @@ class PostFactory extends Factory
             'title' => fake()->sentence(8),
             'author_id' => User::factory(),
             'slug' => Str::slug(fake()->sentence()),
-            'body' =>fake()->text(),
+            'body' => fake()->text(),
+            'category_id' => Category::factory()
         ];
     }
 }
