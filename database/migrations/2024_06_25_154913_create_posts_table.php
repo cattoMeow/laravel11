@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('author');
+            // $table->unsignedBigInteger('author_id');
+            // $table->foreign('author_id')->references('id')->on('users');
+            $table->foreignId('author_id')->constrained(
+                table: 'users', indexName: 'posts_author_id'
+            );
             $table->string('slug')->unique();
             $table->text('body');
-
-            $table->foreignId('category_id')->constrained(
-                table: 'categories',
-                indexName: 'posts_category_id'
-            );
             $table->timestamps();
         });
     }
