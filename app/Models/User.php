@@ -45,6 +45,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // 1 user punya banyak post (one to many)
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class, 'author_id');

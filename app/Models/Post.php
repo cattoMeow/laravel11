@@ -12,8 +12,16 @@ class Post extends Model
     protected $fillable = ['title', 'author_id', 'slug', 'body'];
     use HasFactory;
 
+    // 1 post punya 1 user (one to one)
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+    
+    // 1 post punya 1 kategori (one to one)
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+        
     }
 }

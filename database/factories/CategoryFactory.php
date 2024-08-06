@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
  */
 class CategoryFactory extends Factory
 {
@@ -18,8 +18,8 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'category' => fake()->word(),
-            'slug' => Str::slug(fake()->word())
+            'name' => fake()->sentence(rand(1, 2), false),
+            'slug' => Str::slug(fake()->sentence(rand(1, 2), false))
         ];
     }
 }
