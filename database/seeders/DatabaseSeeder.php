@@ -24,14 +24,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $catto = User::create([
-            'name' => 'cattoMeow',
-            'username' => 'cattomeow',
-            'email' => 'abcde@example.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('password'),
-            'remember_token' => Str::random(10),
-        ]);
 
         // Category::create([
         //     'name' => 'Web Design',
@@ -46,11 +38,10 @@ class DatabaseSeeder extends Seeder
         //     'slug' => 'artikel-1',
         //     'body' => "Lorem ipsum dolor sit amet, consectetur adipisicing \"elit. Doloremque, cupiditate?"
         // ]);
-
+        $this->call([CategorySeeder::class, UserSeeder::class]);
         Post::factory(100)->recycle([
-            Category::factory(3)->create(),
-            $catto,
-            User::factory(5)->create(),
+            Category::all(),
+            User::all(),
         ])->create();
     }
 }
