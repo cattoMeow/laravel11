@@ -10,3 +10,8 @@ if category not found \
 ``composer dumpautoload``\
 ``php artisan optimize:clear``
 
+seed the database \
+``php artisan db:seed``
+
+migrate and seed the database \
+``php artisan migrate:fresh --seed``
