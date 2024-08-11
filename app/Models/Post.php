@@ -9,8 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Post extends Model
 {
     // protected $table = 'blog_posts';
-    protected $fillable = ['title', 'author_id', 'slug', 'body'];
     use HasFactory;
+    protected $fillable = ['title', 'author_id', 'slug', 'body'];
+    protected $with = ['category', 'author'];
 
     // 1 post punya 1 user (one to one)
     public function author(): BelongsTo
