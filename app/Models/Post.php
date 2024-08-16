@@ -30,9 +30,28 @@ class Post extends Model
     {
         // if (isset($filters['search']) ? $filters['search'] : false) {
         // if ($filters['search'] ?? false) {
-        $query-> when($filters['search'] ?? false, function($query, $search){
-            
-            $query->where('title', 'like', '%' . request('search') . '%');
-        }); 
+        // $query-> when($filters['search'] ?? false, function($query, $search){
+
+        //     $query->where('title', 'like', '%' . request('search') . '%');
+        // }); 
+
+        $query->when(
+            $filters['search'] ?? false,
+            fn($query, $search) => 
+            $query->where('title', 'like', '%' . $search . '%')
+        );
+
+        $query->when(
+            $filters['category'] ?? false,
+            fn($query, $category) =>
+            $query->whereHas('category', fn($query) => $query->where('slug', $category))
+        );
+
+        $query->when(
+            $filters['author'] ?? false,
+            fn($query, $author) =>
+            $query->whereHas('author', fn($query) => $query->where('username', $author))
+        );
+        
     }
 }
