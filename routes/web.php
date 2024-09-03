@@ -40,6 +40,11 @@ Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', ['title' => 'Articles in: ' . $category->name, 'posts' => $category->posts]);
 });
 
+Route::get('/login', function() {
+    return view('login', ['title' => 'Login']);
+});
+
+
 // Route::get('/authors', function(){
 //     return view('authors', ['title'=>"Authors"]);
 // });
