@@ -48,13 +48,12 @@ Route::get('/categories/{category:slug}', function (Category $category) {
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
 
+
+Route::get('/google', function () {
+    return redirect()->away('https://www.google.com');
+});
 // Route::get('/authors', function(){
 //     return view('authors', ['title'=>"Authors"]);
 // });
-
-//Buat 2 rute baru
-//1. /blog
-//2 buah artikel, judul dan isi
-//2. /contact
-//email / social me
