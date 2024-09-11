@@ -29,7 +29,7 @@ class RegisterController extends Controller
 
         // dd('registrasi berhasil');
         User::create($validated);
-        $request->session()->flash('status', 'Task was successful!');
-        return redirect('/login');
+        // $request->session()->flash('success', 'Registration success! Please Login...');
+        return redirect('/login')->with('success', 'Registration success! Please Login...');
     }
 }
