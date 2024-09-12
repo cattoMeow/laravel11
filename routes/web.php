@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Arr;
 use App\Models\Post;
@@ -40,12 +43,22 @@ Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', ['title' => 'Articles in: ' . $category->name, 'posts' => $category->posts]);
 });
 
+// Route::get('/login', function() {
+//     return view('login', ['title' => 'Login']);
+// });
+
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+
+Route::get('/google', function () {
+    return redirect()->away('https://www.google.com');
+});
 // Route::get('/authors', function(){
 //     return view('authors', ['title'=>"Authors"]);
 // });
-
-//Buat 2 rute baru
-//1. /blog
-//2 buah artikel, judul dan isi
-//2. /contact
-//email / social me
