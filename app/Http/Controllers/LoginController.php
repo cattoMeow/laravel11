@@ -33,4 +33,15 @@ class LoginController extends Controller
             'loginError' => 'The provided credentials do not match our records. Please try again.',
         ])->onlyInput('loginError');
     }
+
+    public function logout(Request $request)
+    {
+
+        Auth::logout();
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
 }
