@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -43,9 +44,6 @@ Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', ['title' => 'Articles in: ' . $category->name, 'posts' => $category->posts]);
 });
 
-// Route::get('/login', function() {
-//     return view('login', ['title' => 'Login']);
-// });
 
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -56,9 +54,8 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
+Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+
 Route::get('/google', function () {
     return redirect()->away('https://www.google.com');
 });
-// Route::get('/authors', function(){
-//     return view('authors', ['title'=>"Authors"]);
-// });
