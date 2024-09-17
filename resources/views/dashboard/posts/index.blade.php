@@ -9,6 +9,11 @@
 
     <h2>Section title</h2>
     <div class="table-responsive small col-lg-10">
+        <div class="">
+
+            <a href="/dashboard/posts/create" class="btn btn-primary ">Create new
+                post</a>
+        </div>
         <table class="table table-striped table-sm">
             <thead>
                 <tr>

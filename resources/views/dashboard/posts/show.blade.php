@@ -1,7 +1,8 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<main class="pt-1 pb-16 lg:pt-1 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <!-- <main class="pt-1 pb-16 lg:pt-1 lg:pb-24 bg-white dark:bg-gray-900 antialiased "> -->
     <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
         <article
             class="mx-auto w-full max-w-4xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">

@@ -19,7 +19,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2 {{Request::is(patterns: 'dashboard/posts' ? 'active' : '')}}"
-                        href="/dashboard/posts">
+                        href="/dashboard/posts*">
                         <svg class="bi">
                             <use xlink:href="#file-earmark" />
                         </svg>

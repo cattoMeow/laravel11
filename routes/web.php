@@ -56,6 +56,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
 
+Route::get('/dashboard/posts/checkSlug?title=*', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+
 Route::get('/google', function () {
     return redirect()->away('https://www.google.com');
 });
