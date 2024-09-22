@@ -7,30 +7,55 @@
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Create new post</h1>
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-8 mb-8">
 
         <form method="post" action="/dashboard/posts">
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" name="title">
+                <input type="text" class="form-control" id="title" name="title" required autofocus
+                    value="{{old('title')}}">
+                @error('title')
+                <p class=" text-pink-600 text-sm">
+                    {{$message}}
+                </p>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="slug" class="form-label">Slug</label>
-                <input type="text" class="form-control" id="slug" name="slug" disabled readonly>
+                <input type="text" class="form-control" id="slug" name="slug" required value="{{old('slug')}}">
+                @error('slug')
+                <p class=" text-pink-600 text-sm">
+                    {{$message}}
+                </p>
+                @enderror
             </div>
             <div>
-                <label for="category" class="form-label">Category</label>
-                <select class="form-select mb-3" name="category_id">
+                <label for="category_id" class="form-label">Category</label>
+                <select class="form-select mb-3" name="category_id" id="category_id">
                     @foreach ($categories as $category)
+                    @if(old('category_id') == $category->id)
+                    <option value="{{$category->id}}" selected>{{$category->name}}</option>
+                    @else
                     <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endif
                     @endforeach
                 </select>
+                @error('category')
+                <p class=" text-pink-600 text-sm">
+                    {{$message}}
+                </p>
+                @enderror
             </div>
             <div class="mb-3">
-                <label for="category" class="form-label">Content</label>
-                <input id="body" type="hidden" name="body">
+                <label for="body" class="form-label">Content</label>
+                <input id="body" type="hidden" name="body" value="{{old('body')}}">
                 <trix-editor input="body"></trix-editor>
+                @error('body')
+                <p class=" text-pink-600 text-sm">
+                    {{$message}}
+                </p>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">Create Post</button>
         </form>
