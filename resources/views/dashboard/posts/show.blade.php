@@ -18,20 +18,25 @@
                             <p class="text-base text-gray-500 dark:text-gray-400 mb-1">
                                 {{$post->created_at->diffForHumans()}}</p>
                             <a href="/dashboard/posts"
-                                class=" no-underline bg-primary-100 text-primary-800 text-xs font-bold inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+                                class="hover:underline no-underline bg-primary-100 text-primary-800 text-xs font-bold inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
 
                                 &laquo; Back to my post
 
                             </a>
 
-                            <a href="#"
-                                class="no-underline bg-yellow-100 text-yellow-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-800">
+                            <a href="/dashboard/posts/{{$post->slug}}/edit"
+                                class="hover:underline no-underline bg-yellow-100 text-yellow-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-800">
                                 &#128393; Edit
                             </a>
-                            <a href="#"
-                                class="no-underline bg-red-100 text-red-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-800">
-                                &times; Delete
-                            </a>
+
+                            <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <button href="#" onclick="return confirm('Are you sure?')"
+                                    class="hover:underline no-underline bg-red-100 text-red-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-800">
+                                    &times; Delete
+                                </button>
+                            </form>
 
 
 
