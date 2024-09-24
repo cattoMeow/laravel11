@@ -24,6 +24,7 @@ class PostFactory extends Factory
             'category_id' => Category::factory(),
             'slug' => Str::slug(fake()->sentence()),
             'body' =>fake()->text(),
+            'excerpt' => fake()->text(),
         ];
     }
 }

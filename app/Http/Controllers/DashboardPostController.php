@@ -54,7 +54,7 @@ class DashboardPostController extends Controller
 
         
         $validatedData['author_id'] = auth()->user()->id;
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200,'...' );
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 150,'...' );
         
         Post::create(attributes: $validatedData);
         return redirect('/dashboard/posts')->with('success', 'New post has been added');

@@ -25,7 +25,7 @@ return new class extends Migration
             );
             $table->string('slug')->unique();
             $table->string('image')->nullable();
-            // $table->text('excerpt');
+            $table->text('excerpt');
             $table->text('body');
             $table->timestamps();
         });
