@@ -9,23 +9,24 @@
     </div>
     <div class="col-lg-8 mb-8">
 
-        <form method="post" action="/dashboard/posts">
+        <form method="post" action="/dashboard/posts" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" name="title" required autofocus
-                    value="{{old('title')}}">
+                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
+                    autofocus value="{{old('title')}}">
                 @error('title')
-                <p class=" text-pink-600 text-sm">
+                <p class=" invalid-feedback">
                     {{$message}}
                 </p>
                 @enderror
             </div>
             <div class="mb-3">
                 <label for="slug" class="form-label">Slug</label>
-                <input type="text" class="form-control" id="slug" name="slug" required value="{{old('slug')}}">
+                <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"
+                    value="{{old('slug')}}">
                 @error('slug')
-                <p class=" text-pink-600 text-sm">
+                <p class=" invalid-feedback">
                     {{$message}}
                 </p>
                 @enderror
@@ -47,6 +48,16 @@
                 </p>
                 @enderror
             </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Post Image</label>
+                <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
+                @error('image')
+                <p class=" text-pink-600 text-sm">
+                    {{$message}}
+                </p>
+                @enderror
+            </div>
+
             <div class="mb-3">
                 <label for="body" class="form-label">Content</label>
                 <input id="body" type="hidden" name="body" value="{{old('body')}}">

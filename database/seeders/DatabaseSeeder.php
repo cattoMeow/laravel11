@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         //     'body' => "Lorem ipsum dolor sit amet, consectetur adipisicing \"elit. Doloremque, cupiditate?"
         // ]);
         $this->call([CategorySeeder::class, UserSeeder::class]);
-        Post::factory(100)->recycle([
+        Post::factory(25)->recycle([
             Category::all(),
             User::all(),
         ])->create();

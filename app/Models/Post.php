@@ -13,7 +13,7 @@ class Post extends Model
     // protected $table = 'blog_posts';
     use HasFactory;
     use Sluggable;
-    protected $fillable = ['title', 'author_id', 'slug', 'body', 'category_id'];
+    protected $fillable = ['title', 'author_id', 'slug', 'body', 'category_id', 'image'];
     protected $with = ['category', 'author'];
 
     // 1 post punya 1 user (one to one)

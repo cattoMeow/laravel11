@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('color')->nullable(true);
+            $table->string('color')->nullable();
             $table->timestamps();
         });
     }
