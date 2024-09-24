@@ -37,7 +37,7 @@
                                 alt="{{$post->author}}">
                             <div>
                                 <a href="/posts?author={{$post->author->username}}" rel="author"
-                                    class="text-xl font-bold text-gray-900 dark:text-white">{{$post->author->name}}</a>
+                                    class="text-xl font-bold text-gray-900 dark:text-white hover:underline">{{$post->author->name}}</a>
 
                                 <p class="text-base text-gray-500 dark:text-gray-400 mb-1">
                                     {{$post->created_at->diffForHumans()}}</p>
@@ -52,9 +52,15 @@
                         </div>
                     </address>
                     <h1
-                        class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">
+                        class="mb-1 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">
                         {{$post->title}}</h1>
                 </header>
+                @if ($post->image)
+                <div style="">
+                    <img src="{{asset('storage/'.$post->image)}}" class="" alt="">
+                </div>
+                @else
+                @endif
 
                 <p>{!! $post->body !!}</p>
             </article>

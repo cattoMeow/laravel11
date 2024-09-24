@@ -19,6 +19,12 @@
                     </a>
                     <span class="text-sm">{{$post->created_at->diffForHumans()}}</span>
                 </div>
+                @if ($post->image)
+                <div style="max-height:150px; overflow:hidden;">
+                    <img src="{{asset('storage/'.$post->image)}}" class="" alt="">
+                </div>
+                @else
+                @endif
                 <a href="/posts/{{$post->slug}}" class="hover:underline">
                     <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                         {{ $post['title']}}
@@ -33,7 +39,7 @@
                             <img class="w-7 h-7 rounded-full"
                                 src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
                                 alt="{{$post->author->name}}" />
-                            <span class="font-medium text-sm dark:text-white">
+                            <span class="font-medium text-sm dark:text-white hover:underline">
                                 {{Str::limit($post->author->name, 15)}}
                             </span>
                         </div>
