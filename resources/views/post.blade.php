@@ -56,7 +56,7 @@
                         {{$post->title}}</h1>
                 </header>
                 @if ($post->image)
-                <div style="">
+                <div>
                     <img src="{{asset('storage/'.$post->image)}}" class="" alt="">
                 </div>
                 @else
